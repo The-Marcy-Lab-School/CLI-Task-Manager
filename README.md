@@ -6,7 +6,7 @@ This project is a simple command-line task manager where users can add, view, an
 
 **Table of Contents**
 - [Application Investigation](#application-investigation)
-  - [Data Types \& Structures](#data-types--structures)
+  - [Data Types \& Data Structures](#data-types--data-structures)
   - [Variables](#variables)
   - [Data Manipulation](#data-manipulation)
   - [Conditional Logic](#conditional-logic)
@@ -19,19 +19,13 @@ This project is a simple command-line task manager where users can add, view, an
 
 ## Application Investigation
 
-### Data Types & Structures
+### Data Types & Data Structures
 
 Whether you are designing a new application or learning about an existing one, we always start by identifying _what type the persistent data is_ and _how the data is structured_. After all, software is really just a combination of user interfaces that enables a user to manipulate data in a controlled manner. By looking at the type and structure of the data first, we are better able to understand how an application uses and manipulates it.
 
-We should also distinguish **persistent data** from **temporary data**.
-* Persistent Data — data that lasts throughout the lifetime of the application. Most often, this is the data that the user is going to view and manipulate.
-* Temporary Data — data that is used for performing an in-the-moment calculation but that will be thrown away once the calculation has been completed. Typically, this is data that users don't ever see.
-
 **Investigation Questions:** 
 
-* What is the data that is persistent in this application and what data types are used to represent that data?
 * What are the benefits of using the chosen data types and are there any tradeoffs or constraints that we have to consider?
-* What is the temporary data that exists?
 * How does the choice of data structure (array of objects) affect how we can access and modify the data?
 
 **My Notes:**
@@ -42,16 +36,16 @@ We should also distinguish **persistent data** from **temporary data**.
 
 ### Variables
 
-A program is an expression of your computational ideas in a written form and clearly written code makes it easier for other programmers to understand your logic.
+A program is an expression of your computational ideas in a written form and clearly written code makes it easier for other programmers to understand your logic. Clear naming of variables, functions, parameters, and object properties is essential to making sure that your logic is easy to comprehend.
 
-Clear naming of variables, functions, parameters, and object properties is essential to making sure that your logic is easy to comprehend.
+We should also distinguish **persistent variables** from **temporary variables**.
+* Persistent Variables — variables that last throughout the lifetime of the application. Most often, this is the data that the user is going to view and manipulate as they use the application.
+* Temporary Variables — variables that are used for performing an in-the-moment calculation but that will be thrown away once the calculation has been completed. Often, users don't see this data.
 
 **Investigation Questions:**
 
-* Find the variables, functions, parameters, and object property names in the application. Do they clearly describe the content they hold / the functionality they perform?
-* What patterns do you see in naming?
-* Which variables are accessible throughout the entire application vs. only within specific functions?
-* How does this affect how we organize our code?
+* Find the variables, functions, parameters, and object property names in the application. Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming?
+* What data persists throughout the application's runtime versus what data is temporary? How does the persistence of data influence where we declare our variables?
 
 **My Notes:**
 
