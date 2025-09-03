@@ -15,11 +15,19 @@ function showMenu() {
 
     const menuChoice = prompt("Choose an option (1-4): ").trim();
 
-    if (menuChoice === '1') addTask();
-    else if (menuChoice === '2') completeTask();
-    else if (menuChoice === '3') clearTasks();
-    else if (menuChoice === '4') isRunning = false;
-    else console.log("Invalid option, try again.");
+    if (menuChoice === '1') {
+      const description = prompt("Enter task description: ");
+      addTask(description);
+    } else if (menuChoice === '2') {
+      const taskIndex = Number(prompt("Enter task number to complete: ")) - 1;
+      completeTask(taskIndex);
+    } else if (menuChoice === '3') {
+      clearTasks();
+    } else if (menuChoice === '4') {
+      isRunning = false;
+    } else {
+      console.log("Invalid option, try again.");
+    }
 
     console.clear();
   }

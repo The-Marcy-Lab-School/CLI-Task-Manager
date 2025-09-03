@@ -1,8 +1,6 @@
-const prompt = require('prompt-sync')();
 const tasks = [];
 
-const addTask = () => {
-  const description = prompt("Enter task description: ");
+const addTask = (description) => {
   const newTask = {
     description,
     isComplete: false
@@ -24,10 +22,13 @@ const viewTasks = () => {
   console.log();
 }
 
-const completeTask = () => {
-  const taskNumber = Number(prompt("Enter task number to complete: "));
+const completeTask = (taskIndex) => {
+  if (taskNumber === undefined) {
+    console.log("Invalid task number.");
+    return;
+  }
 
-  const task = tasks[taskNumber - 1];
+  const task = tasks[taskIndex];
 
   if (task === undefined) {
     console.log("Invalid task number.");
