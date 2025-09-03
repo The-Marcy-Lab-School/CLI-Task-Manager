@@ -1,6 +1,16 @@
 // This file will handle the tasks-related functionality of the application.
 
-const tasks = [];
+// Tasks are stored in an array of objects. We've provided some sample tasks for you to get started.
+const tasks = [
+  {
+    description: "Complete the CLI Task Manager project",
+    isComplete: true
+  },
+  {
+    description: "Answer investigation questions",
+    isComplete: false
+  }
+];
 
 const addTask = (description) => {
   const newTask = {

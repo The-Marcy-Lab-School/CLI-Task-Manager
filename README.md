@@ -28,8 +28,11 @@ After all, most software is really just a tool for manipulating data. By first d
 
 **Investigation Questions:** 
 
-* What are the benefits of using the chosen data types and are there any tradeoffs or constraints that we have to consider?
-* How does the choice of data structure (array of objects) affect how we can access and modify the data?
+Go to the `tasks.js` file and look at the `tasks` variable. It is an array of objects with a string for `description` and a Boolean for `isComplete`. 
+
+* What are the alternative ways we could represent this data?
+* What are the benefits of using the chosen data types (array, objects, strings, and booleans)? 
+* Are there any tradeoffs or constraints that we have to consider?
 
 **My Notes:**
 
