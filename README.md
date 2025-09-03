@@ -7,7 +7,7 @@ This project is a simple command-line task manager where users can add, view, an
 **Table of Contents**
 - [Application Investigation](#application-investigation)
   - [Data Types \& Data Structures](#data-types--data-structures)
-  - [Variables](#variables)
+  - [Variables \& Scope](#variables--scope)
   - [Data Manipulation](#data-manipulation)
   - [Conditional Logic](#conditional-logic)
   - [Functions \& Modularity](#functions--modularity)
@@ -40,18 +40,23 @@ Go to the `tasks.js` file and look at the `tasks` variable. It is an array of ob
 * ...
 * ...
 
-### Variables
+### Variables & Scope
 
-Clearly written code makes it easier for other programmers to understand your logic. Clear naming of variables, functions, parameters, and object properties is essential to making sure that your logic is easy to comprehend.
+Understanding where variables are declared and how long they exist (their **scope**) is crucial for building well-structured applications. In this CLI Task Manager, we can see variables declared in different locations that serve different purposes.
 
-We should also distinguish **persistent variables** from **temporary variables**.
-* Persistent Variables — variables that last throughout the lifetime of the application. Most often, this is the data that the user is going to view and manipulate as they use the application.
-* Temporary Variables — variables that are used for performing an in-the-moment calculation but that will be thrown away once the calculation has been completed. Often, users don't see this data.
+**Variable Scope Investigation:**
+
+* **Module Scope Variables** — variables declared outside of any function that persist throughout the entire application's lifetime.
+* **Function Scope Variables / Parameters** — variables declared inside functions that only exist while that function is running.
+* **Block-Scope Variables** — variables declared with `let` or `const` inside code blocks (like `if` statements or `while` loops) that only exist within that block.
 
 **Investigation Questions:**
 
-* Find the variables, functions, parameters, and object property names in the application. Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming?
-* What data persists as long as the application is running versus what data is only used temporarily? How does the persistence of data influence where we declare our variables?
+* Look at the `tasks` array in `tasks.js`. Where is it declared and why does it need to be outside of any function?
+* In the `showMenu()` function, variables like `isRunning`, `menuChoice`, `description`, and `taskIndex` are declared. What happens to these variables when the function finishes executing?
+* In functions like `addTask()` and `completeTask()`, we create temporary variables like `newTask` and `task`. Why are these declared inside the function rather than outside?
+* How does the placement of variable declarations affect what data persists between function calls versus what gets reset each time?
+* What would happen if we moved the `tasks` array declaration inside one of the functions? Why would this break the application?
 
 **My Notes:**
 
@@ -165,6 +170,7 @@ Code style encompasses the conventions and formatting choices that make code rea
 **Investigation Questions:**
 
 * How is the code formatted and indented? What patterns do you notice in spacing and organization?
+* Find the variables, functions, parameters, and object property names in the application (search for `const` and `let` keywords). Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming?
 * How are imports, exports, functions and code blocks organized? Is there a logical and consistent flow that makes the code easy to follow?
 * Do comments improve the readability of the codebase without explaining things that are obvious?
 

@@ -3,7 +3,7 @@
 const prompt = require('prompt-sync')();
 const { viewTasks, addTask, completeTask, clearTasks } = require('./tasks.js');
 
-function showMenu() {
+const showMenu = () => {
   let isRunning = true;
 
   while (isRunning) {
