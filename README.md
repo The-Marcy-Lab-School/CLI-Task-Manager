@@ -14,6 +14,7 @@ This project is a simple command-line task manager where users can add, view, an
   - [Looping \& Iteration](#looping--iteration)
   - [User Interface](#user-interface)
   - [Error Handling and Debugging](#error-handling-and-debugging)
+  - [Code Style](#code-style)
 - [Extension Opportunities](#extension-opportunities)
   - [Tips](#tips)
 
@@ -47,7 +48,7 @@ We should also distinguish **persistent variables** from **temporary variables**
 **Investigation Questions:**
 
 * Find the variables, functions, parameters, and object property names in the application. Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming?
-* What data persists throughout the application's runtime versus what data is temporary? How does the persistence of data influence where we declare our variables?
+* What data persists as long as the application is running versus what data is only used temporarily? How does the persistence of data influence where we declare our variables?
 
 **My Notes:**
 
@@ -147,6 +148,22 @@ Real-world applications must handle unexpected situations gracefully. Understand
 * What happens when the user enters invalid input (like letters when numbers are expected)?
 * How does the application handle edge cases like trying to complete a task that doesn't exist?
 * What debugging techniques could you use to understand what's happening when the program doesn't work as expected?
+
+**My Notes:**
+
+* ...
+* ...
+* ...
+
+### Code Style
+
+Code style encompasses the conventions and formatting choices that make code readable and maintainable. While the computer doesn't care about indentation, spacing, or naming conventions, these elements are crucial for human developers who need to read, understand, and modify the code. Consistent code style makes collaboration easier and reduces the cognitive load when working with code.
+
+**Investigation Questions:**
+
+* How is the code formatted and indented? What patterns do you notice in spacing and organization?
+* How are imports, exports, functions and code blocks organized? Is there a logical and consistent flow that makes the code easy to follow?
+* Do comments improve the readability of the codebase without explaining things that are obvious?
 
 **My Notes:**
 

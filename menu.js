@@ -16,7 +16,6 @@ function showMenu() {
     viewTasks();
 
     const menuChoice = prompt("Choose an option (1-4): ").trim();
-
     if (menuChoice === '1') {
       const description = prompt("Enter task description: ");
       addTask(description);
