@@ -25,11 +25,6 @@ const viewTasks = () => {
 }
 
 const completeTask = (taskIndex) => {
-  if (taskNumber === undefined) {
-    console.log("Invalid task number.");
-    return;
-  }
-
   const task = tasks[taskIndex];
 
   if (task === undefined) {
