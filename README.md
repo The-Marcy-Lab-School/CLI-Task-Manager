@@ -21,7 +21,9 @@ This project is a simple command-line task manager where users can add, view, an
 
 ### Data Types & Data Structures
 
-Whether you are designing a new application or learning about an existing one, we always start by identifying _what type the persistent data is_ and _how the data is structured_. After all, software is really just a combination of user interfaces that enables a user to manipulate data in a controlled manner. By looking at the type and structure of the data first, we are better able to understand how an application uses and manipulates it.
+Whether you are designing a new application or learning about an existing one, we always start by asking _how is the data structured_?
+
+After all, most software is really just a tool for manipulating data. By first defining the type and structure of the data, we are better able to design how the application uses and manipulates it.
 
 **Investigation Questions:** 
 
@@ -36,7 +38,7 @@ Whether you are designing a new application or learning about an existing one, w
 
 ### Variables
 
-A program is an expression of your computational ideas in a written form and clearly written code makes it easier for other programmers to understand your logic. Clear naming of variables, functions, parameters, and object properties is essential to making sure that your logic is easy to comprehend.
+Clearly written code makes it easier for other programmers to understand your logic. Clear naming of variables, functions, parameters, and object properties is essential to making sure that your logic is easy to comprehend.
 
 We should also distinguish **persistent variables** from **temporary variables**.
 * Persistent Variables — variables that last throughout the lifetime of the application. Most often, this is the data that the user is going to view and manipulate as they use the application.
