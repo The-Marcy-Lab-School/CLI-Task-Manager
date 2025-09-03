@@ -1,3 +1,5 @@
+// This file will handle the tasks-related functionality of the application.
+
 const tasks = [];
 
 const addTask = (description) => {

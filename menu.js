@@ -1,3 +1,5 @@
+// This file will display the menu and handle the user's input.
+
 const prompt = require('prompt-sync')();
 const { viewTasks, addTask, completeTask, clearTasks } = require('./tasks.js');
 
