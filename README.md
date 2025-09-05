@@ -30,9 +30,9 @@ After all, most software is really just a tool for manipulating data. By first d
 
 Go to the `tasks.js` file and look at the `tasks` variable. It is an array of objects with a string for `description` and a Boolean for `isComplete`. 
 
-* What are the alternative ways we could represent this data?
-* What are the benefits of using the chosen data types (array, objects, strings, and booleans)? 
-* Are there any tradeoffs or constraints that we have to consider?
+* The `isComplete` value is a boolean, but we could also have represented it with the numbers `0` (incomplete) and `1` (complete) or as the strings `"complete"` and `"incomplete"`. What are the benefits of using a boolean to represent this value?
+* Each task is an object with properties `description` and `isComplete`. Suppose we instead represented each task with an array with two values like this: `['walk the dog', false]`? What are the tradeoffs?
+* All task objects are stored in a single `tasks` array. What are the benefits of having all tasks stored in a single array like this? If you were to store the tasks in an object, how would you do it?
 
 **My Notes:**
 
