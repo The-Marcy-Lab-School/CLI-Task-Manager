@@ -32,6 +32,7 @@ Go to the `tasks.js` file and look at the `tasks` variable. It is an array of ob
 
 * The `isComplete` value is a boolean, but we could also have represented it with the numbers `0` (incomplete) and `1` (complete) or as the strings `"complete"` and `"incomplete"`. Why is a boolean the most appropriate data type for `isComplete`?
 * Each task is an object with properties `description` and `isComplete`. Suppose we instead represented each task with an array with two values like this: `['walk the dog', false]`? What makes an object better suited to representing a task than an array?
+* In `menu.js`, the user's chosen task number `taskChoice` is converted to a number using the `Number` casting function. Why is this done? What happens if this type conversion is removed?
 
 **My Notes:**
 

@@ -20,7 +20,8 @@ const showMenu = () => {
       const description = prompt("Enter task description: ");
       addTask(description);
     } else if (menuChoice === '2') {
-      const taskIndex = Number(prompt("Enter task number to complete: ")) - 1;
+      const taskChoice = prompt("Enter task number to complete: ")
+      const taskIndex = Number(taskChoice) - 1;
       completeTask(taskIndex);
     } else if (menuChoice === '3') {
       clearTasks();
