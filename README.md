@@ -8,11 +8,12 @@ This project is a simple command-line task manager where users can add, view, an
 - [Application Investigation](#application-investigation)
   - [Data Types \& Data Structures](#data-types--data-structures)
   - [Variables \& Scope](#variables--scope)
-  - [Data Manipulation](#data-manipulation)
+  - [Functions](#functions)
   - [Conditional Logic](#conditional-logic)
-  - [Functions \& Modularity](#functions--modularity)
+  - [Modules](#modules)
   - [Looping \& Iteration](#looping--iteration)
-  - [User Interface](#user-interface)
+  - [Array Higher-Order Methods / Iterator Functions](#array-higher-order-methods--iterator-functions)
+  - [User Interface Design](#user-interface-design)
   - [Error Handling and Debugging](#error-handling-and-debugging)
   - [Code Style](#code-style)
 - [Extension Opportunities](#extension-opportunities)
@@ -30,8 +31,8 @@ After all, most software is really just a tool for manipulating data. By first d
 
 Go to the `tasks.js` file and look at the `tasks` variable. It is an array of objects with a string for `description` and a Boolean for `isComplete`. 
 
-* The `isComplete` value is a boolean, but we could also have represented it with the numbers `0` (incomplete) and `1` (complete) or as the strings `"complete"` and `"incomplete"`. Why is a boolean the most appropriate data type for `isComplete`?
-* Each task is an object with properties `description` and `isComplete`. Suppose we instead represented each task with an array with two values like this: `['walk the dog', false]`? What makes an object better suited to representing a task than an array?
+* The `isComplete` value is a boolean, but we could also have represented it with the numbers `isComplete: 0` (incomplete) and `isComplete: 1` (complete) or as the strings `isComplete: "complete"` and `isComplete: "incomplete"`. If it were up to you, which would you choose to represent `isComplete` and why?
+* Each task is represented in data as an object with properties `.description` and `.isComplete`. Suppose we instead represented each task as an array with two values like this: `['walk the dog', false]`? Which is a better way to represent the task and why?
 * In `menu.js`, the user's chosen task number `taskChoice` is converted to a number using the `Number` casting function. Why is this done? What happens if this type conversion is removed?
 
 **My Notes:**
@@ -42,21 +43,22 @@ Go to the `tasks.js` file and look at the `tasks` variable. It is an array of ob
 
 ### Variables & Scope
 
-Understanding where variables are declared and how long they exist (their **scope**) is crucial for building well-structured applications. In this CLI Task Manager, we can see variables declared in different locations that serve different purposes.
-
-**Variable Scope Investigation:**
-
-* **Module Scope Variables** — variables declared outside of any function that persist throughout the entire application's lifetime.
-* **Function Scope Variables / Parameters** — variables declared inside functions that only exist while that function is running.
-* **Block-Scope Variables** — variables declared with `let` or `const` inside code blocks (like `if` statements or `while` loops) that only exist within that block.
+Understanding where variables are declared (their **scope**) and therefore where they can be reached is crucial for building well-structured applications. In this CLI Task Manager, we can see variables declared in different locations that serve different purposes.
 
 **Investigation Questions:**
 
-* Look at the `tasks` array in `tasks.js`. Where is it declared and why does it need to be outside of any function?
-* In the `showMenu()` function, variables like `isRunning`, `menuChoice`, `description`, and `taskIndex` are declared. What happens to these variables when the function finishes executing?
-* In functions like `addTask()` and `completeTask()`, we create temporary variables like `newTask` and `task`. Why are these declared inside the function rather than outside?
-* How does the placement of variable declarations affect what data persists between function calls versus what gets reset each time?
-* What would happen if we moved the `tasks` array declaration inside one of the functions? Why would this break the application?
+* In the `showMenu()` function, the variable `isRunning` is declared with `let`. In fact it is the only variable declared with `let`. Why does it need to be declared using the `let` keyword and what would happen if you used `const` instead?
+* Look at the `tasks` array in `tasks.js`. What is the scope of the `tasks` variable? What would happen if we moved the `tasks` array declaration inside one of the functions? Why would this break the application?
+* In the function `addTask()`, we create an object and store it in the `newTask` variable before pushing that object into the `tasks` array. We could also have just written this code that avoids creating a new variable:
+
+    ```js
+    tasks.push({
+      description,
+      isComplete: false
+    }) 
+    ```
+  
+  What are the tradeoffs of these approaches?
 
 **My Notes:**
 
@@ -64,16 +66,15 @@ Understanding where variables are declared and how long they exist (their **scop
 * ...
 * ...
 
-### Data Manipulation
+### Functions
 
-Data manipulation is what computers were designed for. They are able to perform computations and manipulations at a speed that is impossible for humans to match.
+Functions are the building blocks of reusable code. They allow us to break down complex problems into smaller, manageable pieces and avoid repeating the same code multiple times. Good function design and modular organization make code easier to understand, test, and maintain.
 
 **Investigation Questions:**
 
-* How is the data manipulated? Where do you see string and array methods used?
-* Where do you see arrays and objects being accessed with bracket/dot notation?
-* Where do you see data being transformed?
-* Which operations modify the original data (mutate) vs. create new data? Why is this distinction important?
+* Look at how `viewTasks()` is called in `menu.js` - it's called without any arguments: `viewTasks();`. But if you look at the function definition in `tasks.js`, it also takes no parameters. Why doesn't `viewTasks()` need any parameters when it displays the tasks?
+* What if the programmer had written all the task logic directly in `menu.js` instead of creating separate functions? For example, look at the code inside `viewTasks()` - imagine copying all of that code and pasting it directly where `viewTasks()` is called. What would be the downsides of this approach?
+* What if we combined all the task-related functions (`addTask`, `completeTask`, `viewTasks`, `clearTasks`) into one giant function called `handleTaskOperations()`? What parameters would you need to include in order for it to work with all task-related operations?
 
 **My Notes:**
 
@@ -83,14 +84,13 @@ Data manipulation is what computers were designed for. They are able to perform 
 
 ### Conditional Logic
 
-Would you define "artificial intelligence" as the ability for a computer to make an informed decision? If so, then conditional logic is the simplest form of artificial intelligence: given the current conditions of the program, conditional statements enable a program to determine which step to take next.
+Conditional Statements enable programs to behave differently depending on the state of the program. Without them, a program would run the exact same way every time!
 
 **Investigation Questions:**
 
-* What decisions is our application able to make through conditional statements?
-* When does our application use guard clauses to simplify logic?
-* What boolean expressions are being evaluated?
-* How do we handle edge cases (like empty arrays or invalid user input)?
+* In `menu.js`, the `showMenu()` function uses `if/else if` statements to handle different menu choices. What would happen if we used separate `if` statements instead of `else if`? Try to think through what would happen if a user entered "1" as their menu choice.
+* Look at the `addTask()` function in `tasks.js`. The first few lines check `if (!description)` and return early if no description is provided. This is called a "guard clause." What would happen if we removed this guard clause and a user tried to add a task with no description?
+* Look at the `viewTasks()` function. It checks `if (tasks.length === 0)` before displaying tasks. What would happen if we removed this check and tried to display an empty task list?
 
 **My Notes:**
 
@@ -98,16 +98,15 @@ Would you define "artificial intelligence" as the ability for a computer to make
 * ...
 * ...
 
-### Functions & Modularity
+### Modules
 
-Functions are the building blocks of reusable code. They allow us to break down complex problems into smaller, manageable pieces and avoid repeating the same code multiple times. Good function design and modular organization make code easier to understand, test, and maintain.
+A module is a file containing code, which can then be imported and utilized in other parts of a larger program or system. Rather than writing all of our code in one file, this project splits the code into three modules: `index.js`, `tasks.js`, and `main.js`. As a result, we achieve "separation of concerns".
 
 **Investigation Questions:**
 
-* What are the modules in this application and how would you describe the separate concerns of each module?
-* What about the functions? How do functions communicate with each other?
-* What are the inputs and outputs of each function?
-* How does this separation of concerns make the code easier to understand and maintain?
+* Look at the top of `menu.js`. You'll see `addTask` is imported. What would happen if we tried to call `addTask()` in `menu.js` without this import statement? Why do we need to explicitly import these functions?
+* In `tasks.js`, look at the bottom of the file: `module.exports = { addTask, viewTasks, completeTask, clearTasks };`. This exports the functions so they can be used in other files. Notice that the `tasks` array itself isn't exported which means that the `menu.js` file can't access it directly. Why do you think the programmer chose to leave out `tasks` from the export list?
+* If we wanted to add a new feature to the application, giving the user the option to mark all items as complete, how would you split up the code amongst the modules to implement this feature?
 
 **My Notes:**
 
@@ -121,9 +120,9 @@ Loops take repetitive tasks and boil them down to a process that can be repeated
 
 **Investigation Questions:**
 
-* Where are loops used in the application?
-* Are there places where we could use a `for` loop instead of a `while` loop, or vice-versa? Why or why not?
-* How do we ensure our loops will eventually terminate? What would happen if we forgot to update the loop condition?
+* Look at the `showMenu()` function in `menu.js`. There's a `while (isRunning)` loop that keeps the menu running until the user chooses to exit. What would happen if we forgot to set `isRunning = false` when the user chooses option 4 (Exit)? What would happen if we forgot to include that line of code?
+* Why is a `while` loop the appropriate type of loop to use to display the menu as opposed to a `for` loop?
+* The `while` loop in `showMenu()` has a condition `while (isRunning)`. This means the loop will continue as long as `isRunning` is `true`. What would happen if we changed the condition to `while (true)` and removed the `isRunning` variable entirely? How else could we break out of the loop?
 
 **My Notes:**
 
@@ -131,15 +130,31 @@ Loops take repetitive tasks and boil them down to a process that can be repeated
 * ...
 * ...
 
-### User Interface
+### Array Higher-Order Methods / Iterator Functions
+
+Array higher-order methods abstract away the logic for looping through an array and doing something with its values. While the programmer loses some fine-tuned control over how the loop is executed, the improved readability of the code is often worth the tradeoff.
+
+**Investigation Questions**
+
+* In the `viewTasks()` function in `tasks.js`, there's a `forEach` loop: `tasks.forEach((task, index) => { ... })`. This is a different type of loop than the `while` loop. What are the tradeoffs of using `forEach` when compared to using a `for` loop or `while` loop?
+* Look at the `forEach` loop in `viewTasks()`. The loop variable is called `task` and it represents each individual task object. What would happen if we changed the variable name from `task` to `item` or `t`? Would the code still work the same way?
+
+**My Notes**
+
+* ...
+* ...
+* ...
+
+### User Interface Design
 
 The user interface is how humans interact with our programs. Even in a simple command-line application, thoughtful design choices can make the difference between a frustrating or confusing experience and one that feels intuitive and pleasant to use.
 
 **Investigation Questions:**
 
-* How would you rate the user experience?
-* What choices are made to enhance the user experience?
-* How would you improve it given the limited capabilities of a Command-Line Interface (CLI)?
+* Look at the menu display in `showMenu()`. The menu shows numbered options (1, 2, 3, 4) and asks the user to "Choose an option (1-4)". Why do you think the menu uses numbers for the options? What are the potential downsides of having the user type ouf in words what they would like to do? For example: "Choose an option: add an item, view tasks, complete a task, exit".
+* In the `viewTasks()` function, tasks are displayed with checkboxes: `[x]` for completed tasks and `[ ]` for incomplete tasks. Do you think this visual representation is easy to understand? What alternative ways of displaying this information can you think of?
+* Look at the `console.clear()` call at the end of the `while` loop in `showMenu()`. This clears the screen after each menu interaction. How would the user experience change if we removed this line?
+* When a user completes a task, the program shows a message like `Task "walk the dog" marked as completed!`. Why do you think it repeats the task description in the confirmation message?
 
 **My Notes:**
 
@@ -169,7 +184,7 @@ Code style encompasses the conventions and formatting choices that make code rea
 
 **Investigation Questions:**
 
-* How is the code formatted and indented? What patterns do you notice in spacing and organization?
+* Look at the indentation in `tasks.js`. Notice how the code inside functions is indented with 2 spaces, and code inside `if` statements is indented even further. How does this indentation impact your ability to understand the code?
 * Find the variables, functions, parameters, and object property names in the application (search for `const` and `let` keywords). Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming?
 * How are imports, exports, functions and code blocks organized? Is there a logical and consistent flow that makes the code easy to follow?
 * Do comments improve the readability of the codebase without explaining things that are obvious?

@@ -13,12 +13,30 @@ const tasks = [
 ];
 
 const addTask = (description) => {
+  if (!description) {
+    console.log("No description provided.");
+    return;
+  }
+
+  // We could also have just written this code that avoids creating a new variable:
   const newTask = {
     description,
     isComplete: false
   };
   tasks.push(newTask);
   console.log(`Task "${newTask.description}" added!`);
+}
+
+const completeTask = (taskIndex) => {
+  const task = tasks[taskIndex];
+
+  if (!task) {
+    console.log("Invalid task number.");
+    return;
+  }
+
+  task.isComplete = true;
+  console.log(`Task "${task.description}" marked as completed!`);
 }
 
 const viewTasks = () => {
@@ -35,18 +53,6 @@ const viewTasks = () => {
     console.log(`${index + 1}. [${task.isComplete ? 'x' : ' '}] ${task.description}`);
   });
   console.log();
-}
-
-const completeTask = (taskIndex) => {
-  const task = tasks[taskIndex];
-
-  if (task === undefined) {
-    console.log("Invalid task number.");
-    return;
-  }
-
-  task.isComplete = true;
-  console.log(`Task "${task.description}" marked as completed!`);
 }
 
 const clearTasks = () => {
