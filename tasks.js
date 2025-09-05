@@ -29,6 +29,9 @@ const viewTasks = () => {
 
   console.log("Your Tasks:");
   tasks.forEach((task, index) => {
+    // Prints out the task list like this: 
+    // 1. [x] Complete the CLI Task Manager project
+    // 2. [ ] Answer investigation questions
     console.log(`${index + 1}. [${task.isComplete ? 'x' : ' '}] ${task.description}`);
   });
   console.log();
