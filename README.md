@@ -6,6 +6,7 @@ This project is a simple command-line task manager where users can add, view, an
 
 **Table of Contents**
 - [Application Investigation](#application-investigation)
+  - [Objective](#objective)
   - [Data Types \& Data Structures](#data-types--data-structures)
   - [Variables \& Scope](#variables--scope)
   - [Functions](#functions)
@@ -20,6 +21,12 @@ This project is a simple command-line task manager where users can add, view, an
   - [Tips](#tips)
 
 ## Application Investigation
+
+### Objective
+
+By answering these questions, you will think critically about how the application is designed and understand WHY it is designed in this way. Your aim should be:
+* to learn as much as you can from this application so that you can build an application of your own that leverages these same skills
+* to communicate clearly about the concepts you are using and the decisions you made for how you implement them.
 
 ### Data Types & Data Structures
 
@@ -184,10 +191,10 @@ Code style encompasses the conventions and formatting choices that make code rea
 
 **Investigation Questions:**
 
-* Look at the indentation in `tasks.js`. Notice how the code inside functions is indented with 2 spaces, and code inside `if` statements is indented even further. How does this indentation impact your ability to understand the code?
-* Find the variables, functions, parameters, and object property names in the application (search for `const` and `let` keywords). Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming?
-* How are imports, exports, functions and code blocks organized? Is there a logical and consistent flow that makes the code easy to follow?
-* Do comments improve the readability of the codebase without explaining things that are obvious?
+1. Look at the indentation in `tasks.js`. Notice how the code inside functions is indented with 2 spaces, and code inside `if` statements is indented even further. How does this indentation impact your ability to understand the code?
+2. Find the variables, functions, parameters, and object property names in the application (search for `const` and `let` keywords). Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming?
+3. How are imports, exports, functions and code blocks organized? Is there a logical and consistent flow that makes the code easy to follow?
+4. Do comments improve the readability of the codebase without explaining things that are obvious?
 
 **My Notes:**
 

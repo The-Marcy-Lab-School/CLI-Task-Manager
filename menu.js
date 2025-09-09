@@ -15,12 +15,12 @@ const showMenu = () => {
 
     viewTasks();
 
-    const menuChoice = prompt("Choose an option (1-4): ").trim();
+    const menuChoice = prompt('Choose an option (1-4): ').trim();
     if (menuChoice === '1') {
-      const description = prompt("Enter task description: ");
+      const description = prompt('Enter task description: ');
       addTask(description);
     } else if (menuChoice === '2') {
-      const taskChoice = prompt("Enter task number to complete: ")
+      const taskChoice = prompt('Enter task number to complete: ')
       const taskIndex = Number(taskChoice) - 1;
       completeTask(taskIndex);
     } else if (menuChoice === '3') {
@@ -28,11 +28,11 @@ const showMenu = () => {
     } else if (menuChoice === '4') {
       isRunning = false;
     } else {
-      console.log("Invalid option, try again.");
+      console.log('Invalid option, try again.');
     }
 
     console.clear();
   }
-}
+};
 
 module.exports = { showMenu };

@@ -3,49 +3,49 @@
 // Tasks are stored in an array of objects. We've provided some sample tasks for you to get started.
 const tasks = [
   {
-    description: "Complete the CLI Task Manager project",
-    isComplete: true
+    description: 'Complete the CLI Task Manager project',
+    isComplete: true,
   },
   {
-    description: "Answer investigation questions",
-    isComplete: false
-  }
+    description: 'Answer investigation questions',
+    isComplete: false,
+  },
 ];
 
 const addTask = (description) => {
   if (!description) {
-    console.log("No description provided.");
+    console.log('No description provided.');
     return;
   }
 
   // We could also have just written this code that avoids creating a new variable:
   const newTask = {
     description,
-    isComplete: false
+    isComplete: false,
   };
   tasks.push(newTask);
   console.log(`Task "${newTask.description}" added!`);
-}
+};
 
 const completeTask = (taskIndex) => {
   const task = tasks[taskIndex];
 
   if (!task) {
-    console.log("Invalid task number.");
+    console.log('Invalid task number.');
     return;
   }
 
   task.isComplete = true;
   console.log(`Task "${task.description}" marked as completed!`);
-}
+};
 
 const viewTasks = () => {
   if (tasks.length === 0) {
-    console.log("No tasks yet! Add one to get started.");
+    console.log('No tasks yet! Add one to get started.');
     return;
   }
 
-  console.log("Your Tasks:");
+  console.log('Your Tasks:');
   tasks.forEach((task, index) => {
     // Prints out the task list like this: 
     // 1. [x] Complete the CLI Task Manager project
@@ -53,11 +53,11 @@ const viewTasks = () => {
     console.log(`${index + 1}. [${task.isComplete ? 'x' : ' '}] ${task.description}`);
   });
   console.log();
-}
+};
 
 const clearTasks = () => {
   tasks.length = 0;
-  console.log("All tasks cleared!");
-}
+  console.log('All tasks cleared!');
+};
 
 module.exports = { addTask, viewTasks, completeTask, clearTasks };
