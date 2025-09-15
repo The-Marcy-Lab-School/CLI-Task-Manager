@@ -6,7 +6,6 @@ This project is a simple command-line task manager where users can add, view, an
 
 **Table of Contents**
 - [Application Investigation](#application-investigation)
-  - [Objective](#objective)
   - [Data Types](#data-types)
   - [Variables \& Scope](#variables--scope)
   - [Functions](#functions)
@@ -23,11 +22,9 @@ This project is a simple command-line task manager where users can add, view, an
 
 ## Application Investigation
 
-### Objective
-
-By answering these questions, you will think critically about how the application is designed and understand WHY it is designed in this way. Your aim should be:
-* to learn as much as you can from this application so that you can build an application of your own that leverages these same skills
-* to communicate clearly about the concepts you are using and the decisions you made for how you implement them.
+By answering these questions, you will be required to think critically about how the application is designed and understand WHY it is designed in this way. Your aim should be to:
+* learn as much as you can from this application so that you can build an application of your own that leverages these same skills
+* communicate clearly about the concepts you are using and the decisions you make for how you implement them.
 
 ### Data Types
 
