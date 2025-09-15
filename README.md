@@ -28,17 +28,14 @@ By answering these questions, you will be required to think critically about how
 
 ### Data Types
 
-Whether you are designing a new application or learning about an existing one, we always start by asking _how is the data represented_?
-
-After all, most software is really just a tool for manipulating data. By first defining the way we choose to represent the data, we are better able to design how the application uses and manipulates it.
+Whether you are designing a new application or learning about an existing one, we always start by asking: _how is the data represented_? Once we know how to represent the data, we are better able to design how the application uses and manipulates it.
 
 **Investigation Questions:** 
 
-Go to the `tasks.js` file and look at the `tasks` variable. It is an array of objects, each with a string for `description` and a Boolean for `isComplete`. 
 
-1. The `isComplete` value is represented as a boolean, but we could also have represented it with the numbers `isComplete: 0` (incomplete) and `isComplete: 1` (complete) or as the strings `isComplete: "complete"` and `isComplete: "incomplete"`. If it were up to you, which would you choose to represent `isComplete` and why?
-2. In `menu.js`, the user's chosen task number `taskChoice` is converted to a number using the `Number` casting function. Why is this code necessary? What happens if this type conversion is removed?
-3. In `tasks.js` in the `addTask` function, there is this conditional statement: `if (!description)`. What data type does the expression `!description` evaluate to and what is the purpose of this conditional statement?
+1. Go to the `tasks.js` file and look at the `tasks` variable. It is an array of objects. Each object represents a task in the list. Each task has a `description` string and an `isComplete` boolean. For the `isComplete` value, We could also have represented it with the numbers: `isComplete: 0` (incomplete) and `isComplete: 1` (complete); or as strings `isComplete: "complete"` and `isComplete: "incomplete"`. If it were up to you, which would you choose to represent `isComplete` and why?
+2. In `tasks.js` in the `addTask` function, there is this conditional statement: `if (!description)`. What data type does the expression `!description` evaluate to? and what is the purpose of this conditional statement?
+3. In `menu.js`, the user's chosen task number `taskChoice` is converted to a number using the `Number` casting function. Why is this code necessary? What happens if this type conversion is removed?
 
 **My Notes:**
 
@@ -52,18 +49,15 @@ Understanding where variables are declared (their **scope**) and therefore where
 
 **Investigation Questions:**
 
-1. In the `showMenu()` function, the variable `isRunning` is declared with `let`. In fact it is the only variable declared with `let`. Why does it need to be declared using the `let` keyword and what would happen if you used `const` instead?
-2. Look at the `tasks` array in `tasks.js`. What is the scope of the `tasks` variable? What would happen if we moved the `tasks` array declaration inside one of the functions? Why would this break the application?
-3. In the function `addTask()`, we create an object and store it in the `newTask` variable before pushing that object into the `tasks` array. We could also have just written this code that avoids creating a new variable:
+1. In the `showMenu()` function in `menu.js`, the variable `isRunning` is declared with `let`. In fact it is the only variable declared with `let`. Why does it need to be declared using the `let` keyword and what would happen if you used `const` instead?
+2. In the `showMenu()` function in `menu.js`, take a look at the `taskChoice` and `taskIndex` variables. Consider that we could have also written the code without any variables and it would still work properly:
 
     ```js
-    tasks.push({
-      description,
-      isComplete: false
-    }) 
+    completeTask(Number(prompt('Enter task number to complete: ')) - 1);
     ```
   
-  What are the tradeoffs of these approaches?
+    What are the tradeoffs of these approaches?
+3. Look at the `tasks` array in `tasks.js`. What is the scope of the `tasks` variable? What would happen if we moved the `tasks` array declaration inside one of the functions? Why would this break the application?
 
 **My Notes:**
 
@@ -77,8 +71,17 @@ Functions are the building blocks of reusable code. They allow us to break down 
 
 **Investigation Questions:**
 
-1. Look at how `viewTasks()` is called in `menu.js` - it's called without any arguments: `viewTasks();`. But if you look at the function definition in `tasks.js`, it also takes no parameters. Why doesn't `viewTasks()` need any parameters when it displays the tasks?
-2. What if the programmer had written all the task logic directly in `menu.js` instead of creating separate functions? For example, look at the code inside `viewTasks()` - imagine copying all of that code and pasting it directly where `viewTasks()` is called. What would be the downsides of this approach?
+1. In `menu.js`, take a look at how the `prompt()` function is being invoked. Based on what you're seeing, how many parameters does the function seem to have? If you were the designer of that function what name would you give to its parameters?
+2. What if the programmer had written all the task logic directly in `menu.js` instead of creating separate functions? For example, look at the code inside `clearTasks()` — imagine copying all of that code and pasting it directly where `clearTasks()` is called. 
+    
+    ```js
+    else if (menuChoice === '3') {
+      tasks.length = 0;
+      console.log('All tasks cleared!');
+    }
+    ```
+
+    Would this code even work? Assuming you could get it to work, what are the downsides of doing this for potentially all of the tasks-related functions?
 3. What if we combined all the task-related functions (`addTask`, `completeTask`, `viewTasks`, `clearTasks`) into one giant function called `handleTaskOperations()`? What parameters would you need to include in order for it to work with all task-related operations?
 
 **My Notes:**
@@ -205,7 +208,7 @@ The user interface is how humans interact with our programs. Even in a simple co
 
 **Investigation Questions:**
 
-1. Look at the menu display in `showMenu()`. The menu shows numbered options (1, 2, 3, 4) and asks the user to "Choose an option (1-4)". Why do you think the menu uses numbers for the options? What are the potential downsides of having the user type ouf in words what they would like to do? For example: "Choose an option: add an item, view tasks, complete a task, exit".
+1. Look at the menu display in `showMenu()`. The menu shows numbered options (1, 2, 3, 4) and asks the user to "Choose an option (1-4)". Why do you think the menu uses numbers for the options? What are the potential downsides of having the user type out in words what they would like to do? For example: "Choose an option: add an item, view tasks, complete a task, exit".
 2. In the `viewTasks()` function, tasks are displayed with checkboxes: `[x]` for completed tasks and `[ ]` for incomplete tasks. Do you think this visual representation is easy to understand? What alternative ways of displaying this information can you think of?
 3. Look at the `console.clear()` call at the end of the `while` loop in `showMenu()`. This clears the screen after each menu interaction. How would the user experience change if we removed this line?
 4. When a user completes a task, the program shows a message like `Task "walk the dog" marked as completed!`. Why do you think it repeats the task description in the confirmation message?
