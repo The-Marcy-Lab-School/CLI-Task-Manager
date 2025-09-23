@@ -2,9 +2,10 @@
   "name": "swe-lab-1-1-first-cli-app",
   "version": "1.0.0",
   "description": "CLI App",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
