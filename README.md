@@ -28,3 +28,8 @@ npm install
 # Run the src/index.js file
 npm start
 ```
+
+## Key Technologies & Packages
+
+* Node
+* `prompt-sync`
