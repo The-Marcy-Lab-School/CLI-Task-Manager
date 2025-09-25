@@ -14,7 +14,7 @@ const tasks = [
 
 const addTask = (description) => {
   if (!description) {
-    console.log('No description provided.');
+    console.log('\nNo description provided.');
     return;
   }
 
@@ -24,28 +24,28 @@ const addTask = (description) => {
     isComplete: false,
   };
   tasks.push(newTask);
-  console.log(`Task "${newTask.description}" added!`);
+  console.log(`\nTask "${newTask.description}" added!`);
 };
 
 const completeTask = (taskIndex) => {
   const task = tasks[taskIndex];
 
   if (!task) {
-    console.log('Invalid task number.');
+    console.log('\nInvalid task number.');
     return;
   }
 
   task.isComplete = true;
-  console.log(`Task "${task.description}" marked as completed!`);
+  console.log(`\nTask "${task.description}" marked as completed!`);
 };
 
 const viewTasks = () => {
   if (tasks.length === 0) {
-    console.log('No tasks yet! Add one to get started.');
+    console.log('\nNo tasks yet! Add one to get started.');
     return;
   }
 
-  console.log('Your Tasks:');
+  console.log('\nYour Tasks:');
   tasks.forEach((task, index) => {
     // Prints out the task list like this: 
     // 1. [x] Complete the CLI Task Manager project
@@ -57,7 +57,7 @@ const viewTasks = () => {
 
 const clearTasks = () => {
   tasks.length = 0;
-  console.log('All tasks cleared!');
+  console.log('\nAll tasks cleared!');
 };
 
 module.exports = { addTask, viewTasks, completeTask, clearTasks };

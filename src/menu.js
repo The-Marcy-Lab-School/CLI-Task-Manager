@@ -31,6 +31,7 @@ const showMenu = () => {
       console.log('Invalid option, try again.');
     }
 
+    prompt('\nPress Enter to continue...');
     console.clear();
   }
 };
