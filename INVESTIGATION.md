@@ -206,8 +206,8 @@ The user interface is how humans interact with our programs. Even in a simple co
 
 1. Look at the menu display in `showMenu()`. The menu shows numbered options (1, 2, 3, 4) and asks the user to "Choose an option (1-4)". Why do you think the menu uses numbers for the options? What are the potential downsides of having the user type out in words what they would like to do? For example: "Choose an option: add an item, view tasks, complete a task, exit".
 2. In the `viewTasks()` function, tasks are displayed with checkboxes: `[x]` for completed tasks and `[ ]` for incomplete tasks. Do you think this visual representation is easy to understand? What alternative ways of displaying this information can you think of?
-3. Look at the `console.clear()` call at the end of the `while` loop in `showMenu()`. This clears the screen after each menu interaction. How would the user experience change if we removed this line?
-4. When a user completes a task, the program shows a message like `Task "walk the dog" marked as completed!`. Why do you think it repeats the task description in the confirmation message?
+3. Look at the `console.clear()` call at the end of the `while` loop in `showMenu()`. It occurs after a final `prompt()` for the user to press Enter. How would the user experience change if we didn't clear the console? How would it change if we removed the `prompt()` that comes right before it?
+4. When a user completes a task, the program shows a message like `Task "walk the dog" marked as completed!`. Why is it important that the user sees these messages? How would the user experience change without these messages?
 
 **My Notes:**
 
