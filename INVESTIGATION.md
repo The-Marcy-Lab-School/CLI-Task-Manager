@@ -6,6 +6,7 @@ By answering these questions, you will be required to think critically about how
 
 **Table of Contents**
 - [Investigation Questions](#investigation-questions)
+  - [User Interface Design](#user-interface-design)
   - [Data Types](#data-types)
   - [Variables \& Scope](#variables--scope)
   - [Functions](#functions)
@@ -16,11 +17,27 @@ By answering these questions, you will be required to think critically about how
   - [Array Higher-Order Methods / Iterator Functions](#array-higher-order-methods--iterator-functions)
   - [Error Handling and Debugging](#error-handling-and-debugging)
   - [Code Style](#code-style)
-  - [User Interface Design](#user-interface-design)
 - [Extension Opportunities](#extension-opportunities)
   - [Tips](#tips)
 
 ## Investigation Questions
+
+### User Interface Design
+
+The user interface is how humans interact with our programs. Even in a simple command-line application, thoughtful design choices can make the difference between a frustrating or confusing experience and one that feels intuitive and pleasant to use.
+
+**Investigation Questions:**
+
+1. Look at the menu display in `showMenu()`. The menu shows numbered options (1, 2, 3, 4) and asks the user to "Choose an option (1-4)". Why do you think the menu uses numbers for the options? What are the potential downsides of having the user type out in words what they would like to do? For example: "Choose an option: add an item, view tasks, complete a task, exit".
+2. In the `viewTasks()` function, tasks are displayed with checkboxes: `[x]` for completed tasks and `[ ]` for incomplete tasks. Do you think this visual representation is easy to understand? What alternative ways of displaying this information can you think of?
+3. Look at the `console.clear()` call at the end of the `while` loop in `showMenu()`. It occurs after a final `prompt()` for the user to press Enter. How would the user experience change if we didn't clear the console? How would it change if we removed the `prompt()` that comes right before it?
+4. When a user completes a task, the program shows a message like `Task "walk the dog" marked as completed!`. Why is it important that the user sees these messages? How would the user experience change without these messages?
+
+**My Notes:**
+
+* ...
+* ...
+* ...
 
 ### Data Types
 
@@ -185,29 +202,6 @@ Code style encompasses the conventions and formatting choices that make code rea
 2. Find the variables, functions, parameters, and object property names in the application (search for `const` and `let` keywords). Do they clearly describe the content they hold / the functionality they perform? What patterns do you see in naming? Why is this important?
 3. How are imports, exports, functions and code blocks organized? Is there a logical and consistent flow that makes the code easy to follow?
 4. What do you think the reason is that some files are in the `src` sub-folder while other files are in the root of the project. What is the purpose or benefit of this separation?
-
-**My Notes:**
-
-* ...
-* ...
-* ...
-
-**My Notes**
-
-* ...
-* ...
-* ...
-
-### User Interface Design
-
-The user interface is how humans interact with our programs. Even in a simple command-line application, thoughtful design choices can make the difference between a frustrating or confusing experience and one that feels intuitive and pleasant to use.
-
-**Investigation Questions:**
-
-1. Look at the menu display in `showMenu()`. The menu shows numbered options (1, 2, 3, 4) and asks the user to "Choose an option (1-4)". Why do you think the menu uses numbers for the options? What are the potential downsides of having the user type out in words what they would like to do? For example: "Choose an option: add an item, view tasks, complete a task, exit".
-2. In the `viewTasks()` function, tasks are displayed with checkboxes: `[x]` for completed tasks and `[ ]` for incomplete tasks. Do you think this visual representation is easy to understand? What alternative ways of displaying this information can you think of?
-3. Look at the `console.clear()` call at the end of the `while` loop in `showMenu()`. It occurs after a final `prompt()` for the user to press Enter. How would the user experience change if we didn't clear the console? How would it change if we removed the `prompt()` that comes right before it?
-4. When a user completes a task, the program shows a message like `Task "walk the dog" marked as completed!`. Why is it important that the user sees these messages? How would the user experience change without these messages?
 
 **My Notes:**
 
